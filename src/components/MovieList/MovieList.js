@@ -9,12 +9,14 @@ const MovieList = () => {
   const fetchMovieList = async () => {
     try {
       setLoading(true);
-      // NOTE: https://hoblist.com/api/movieList api is not working
+      // NOTE: https://hoblist.com/api/movieList api for post request is not working
       const response = await fetch(
-        "https://my-json-server.typicode.com/horizon-code-academy/fake-movies-api/movies"
+        "https://hoblist.com/_next/data/2GTRJKV3TK4mAPNGOUMSR/en/favourites/list/movies.json?category=movies&language=kannada&genere=all&sort=voting"
       );
-      const data = await response.json();
-      setMovieList(data);
+      const {
+        pageProps: { result = [] },
+      } = await response.json();
+      setMovieList(JSON.parse(result));
     } catch (err) {
       console.error(err);
     } finally {
@@ -27,13 +29,13 @@ const MovieList = () => {
   }, []);
 
   if (loading) {
-    return <Skeleton variant="rectangular" width="100%" height={118} />;
+    return <Skeleton variant="rectangular" width="100%" height="50vh" />;
   }
 
   return (
     <Grid container spacing={2}>
       {movieList.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
+        <MovieCard key={movie._id} movie={movie} />
       ))}
     </Grid>
   );

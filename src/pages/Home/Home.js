@@ -1,12 +1,16 @@
 import React from "react";
+import { Container } from "@mui/material";
 import MovieList from "../../components/MovieList/MovieList";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <Container
+      sx={{
+        paddingY: "20px",
+      }}
+    >
       <MovieList />
-    </div>
+    </Container>
   );
 };
 

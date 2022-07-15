@@ -8,31 +8,33 @@ import {
 } from "@mui/material";
 
 const MovieCard = ({ movie }) => {
-  const { Title, Year, Runtime, Poster } = movie;
+  const { title, userTag, pageViews, poster } = movie;
 
   return (
-    <Grid item md={6}>
+    <Grid item md={6} sx={{ width: "100%" }}>
       <Card sx={{ display: "flex", width: "100%" }}>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
+          <CardContent>
             <Typography component="div" variant="h5">
-              {Title}
+              {title}
             </Typography>
             <Typography
               variant="subtitle1"
               color="text.secondary"
               component="div"
             >
-              {`${Year} | ${Runtime}`}
+              {`User Tag: ${userTag} | Page Views: ${pageViews}`}
             </Typography>
           </CardContent>
         </Box>
-        <CardMedia
-          component="img"
-          sx={{ width: 151 }}
-          image={Poster}
-          alt={Title}
-        />
+        {poster && (
+          <CardMedia
+            component="img"
+            sx={{ width: 151 }}
+            image={poster}
+            alt={title}
+          />
+        )}
       </Card>
     </Grid>
   );

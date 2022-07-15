@@ -4,18 +4,16 @@ import Home from "./pages/Home/Home";
 import CompanyInfo from "./pages/CompanyInfo/CompanyInfo";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <MenuBar />
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route index element={<Home />} />
-          <Route path="teams" element={<CompanyInfo />} />
-        </Route>
+        <Route index element={<Home />} />
+        <Route path="/company-info" element={<CompanyInfo />} />
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
